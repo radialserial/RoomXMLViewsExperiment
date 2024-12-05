@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-//    id("com.google.devtools.ksp")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -55,15 +55,15 @@ dependencies {
 //    implementation(libs.androidx.navigation.ui.ktx)
 //
 //    // Room components
-//    ksp(libs.androidx.room.compiler)
-//    implementation(libs.androidx.room.runtime)
-//    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler.v261)
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
 //    androidTestImplementation(libs.androidx.room.testing)
 //
 //    // Lifecycle components
 //    implementation(libs.androidx.lifecycle.extensions)
 //    implementation(libs.androidx.lifecycle.common.java8)
-//    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
 //
 //    // Kotlin components
 //    implementation(libs.kotlin.stdlib.jdk7)
