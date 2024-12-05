@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("com.google.devtools.ksp")
+//    id("com.google.devtools.ksp")
 }
 
 android {
@@ -50,23 +50,23 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    // Navigation Component
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
-
-    // Room components
-    ksp(libs.androidx.room.compiler)
-    implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.room.ktx)
-    androidTestImplementation(libs.androidx.room.testing)
-
-    // Lifecycle components
-    implementation(libs.androidx.lifecycle.extensions)
-    implementation(libs.androidx.lifecycle.common.java8)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
-
-    // Kotlin components
-    implementation(libs.kotlin.stdlib.jdk7)
-    api(libs.kotlinx.coroutines.core)
-    api(libs.kotlinx.coroutines.android)
+//    // Navigation Component
+//    implementation(libs.androidx.navigation.fragment.ktx)
+//    implementation(libs.androidx.navigation.ui.ktx)
+//
+//    // Room components
+//    ksp(libs.androidx.room.compiler)
+//    implementation(libs.androidx.room.runtime)
+//    implementation(libs.androidx.room.ktx)
+//    androidTestImplementation(libs.androidx.room.testing)
+//
+//    // Lifecycle components
+//    implementation(libs.androidx.lifecycle.extensions)
+//    implementation(libs.androidx.lifecycle.common.java8)
+//    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+//
+//    // Kotlin components
+//    implementation(libs.kotlin.stdlib.jdk7)
+//    api(libs.kotlinx.coroutines.core)
+//    api(libs.kotlinx.coroutines.android)
 }
