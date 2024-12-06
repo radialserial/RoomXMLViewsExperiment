@@ -51,8 +51,8 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
 //    // Navigation Component
-//    implementation(libs.androidx.navigation.fragment.ktx)
-//    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 
 //    // Room components
     kapt(libs.androidx.room.compiler.v261)
