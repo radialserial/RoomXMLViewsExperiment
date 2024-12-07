@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     kotlin("kapt")
+    // Automatically parcelize
+    id("org.jetbrains.kotlin.plugin.parcelize")
 }
 
 android {
