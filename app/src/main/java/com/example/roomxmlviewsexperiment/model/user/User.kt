@@ -1,4 +1,4 @@
-package com.example.roomxmlviewsexperiment.model
+package com.example.roomxmlviewsexperiment.model.user
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

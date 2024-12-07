@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.roomxmlviewsexperiment.databinding.UserItemBinding
-import com.example.roomxmlviewsexperiment.model.User
+import com.example.roomxmlviewsexperiment.model.user.User
 
 class ListAdapter : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
 

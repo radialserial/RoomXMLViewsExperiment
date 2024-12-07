@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.roomxmlviewsexperiment.R
 import com.example.roomxmlviewsexperiment.databinding.FragmentAddBinding
-import com.example.roomxmlviewsexperiment.model.User
+import com.example.roomxmlviewsexperiment.model.user.User
 import com.example.roomxmlviewsexperiment.viewmodel.UserViewModel
 
 class AddFragment : Fragment() {

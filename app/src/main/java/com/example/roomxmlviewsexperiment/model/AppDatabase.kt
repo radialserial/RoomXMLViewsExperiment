@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.roomxmlviewsexperiment.model.user.User
+import com.example.roomxmlviewsexperiment.model.user.UserDao
 
 @Database(
     entities = [User::class],

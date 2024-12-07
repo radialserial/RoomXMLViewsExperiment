@@ -1,4 +1,4 @@
-package com.example.roomxmlviewsexperiment.model
+package com.example.roomxmlviewsexperiment.model.user
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
