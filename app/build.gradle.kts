@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     kotlin("kapt")
+    // Pass arguments between fragments
+    id("androidx.navigation.safeargs")
 }
 
 android {
