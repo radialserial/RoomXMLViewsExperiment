@@ -3,11 +3,17 @@ package com.example.roomxmlviewsexperiment.fragments.update
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.roomxmlviewsexperiment.R
@@ -18,11 +24,12 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class UpdateFragment : Fragment() {
+class UpdateFragment : Fragment(), MenuProvider {
 
     private lateinit var binding: FragmentUpdateBinding
     private val args by navArgs<UpdateFragmentArgs>()
     private val userViewModel by viewModels<UserViewModel>()
+    private lateinit var currentUser: User
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,12 +39,14 @@ class UpdateFragment : Fragment() {
 
         try {
             CoroutineScope(Dispatchers.Main).launch {
-                val currentUser = userViewModel.getUserById(args.currentUserId)
-                updateUserDisplay(currentUser.await())
+                currentUser = userViewModel.getUserById(args.currentUserId).await()
+                updateUserDisplay(currentUser)
             }
         } catch (e: Exception) {
             Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_LONG).show()
         }
+
+        requireActivity().addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
         return binding.root
     }
@@ -69,6 +78,39 @@ class UpdateFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.delete_menu, menu)
+    }
+
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        if (menuItem.itemId == R.id.menu_delete) {
+            showDeleteUserDialog()
+            findNavController().navigate(R.id.action_updateFragment_to_listFragment)
+            return true
+        }
+        return false
+    }
+
+    private fun showDeleteUserDialog() {
+        AlertDialog.Builder(requireContext())
+            .setPositiveButton("Yes") { _, _ ->
+                deleteUser()
+            }
+            .setNegativeButton("No") { _, _ -> }
+            .setTitle("Deleting ${currentUser.firstName}")
+            .setMessage("Are you sure you want to delete ${currentUser.firstName}?")
+            .create().show()
+    }
+
+    private fun deleteUser() {
+        userViewModel.deleteUser(currentUser)
+        Toast.makeText(
+            requireContext(),
+            "Successfully deleted ${currentUser.firstName}.",
+            Toast.LENGTH_LONG
+        ).show()
     }
 
 }

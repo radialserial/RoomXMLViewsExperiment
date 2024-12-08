@@ -12,4 +12,5 @@
     <string name="lastname_placeholder">Lastname</string>
     <string name="age_placeholder">(Age)</string>
     <string name="update">Update</string>
+    <string name="delete">Delete</string>
 </resources>
