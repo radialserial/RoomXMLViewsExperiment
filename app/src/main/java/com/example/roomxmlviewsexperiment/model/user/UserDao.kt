@@ -9,12 +9,12 @@ import androidx.room.Upsert
 interface UserDao {
 
     @Upsert
-    fun upsertUser(user: User)
+    suspend fun upsertUser(user: User)
 
     @Query("SELECT * FROM user")
     fun getAllUsers(): LiveData<List<User>>
 
     @Query("SELECT * FROM user WHERE id = :userId")
-    fun getUserById(userId: Int): User?
+    suspend fun getUserById(userId: Int): User?
 
 }
