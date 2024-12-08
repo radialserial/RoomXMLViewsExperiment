@@ -42,4 +42,11 @@ class UserViewModel(application: Application) :
         }
     }
 
+    fun deleteAllUsers() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteAllUsers()
+        }
+    }
+
+
 }
