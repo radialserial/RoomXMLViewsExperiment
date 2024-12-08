@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roomxmlviewsexperiment.R
@@ -28,7 +29,15 @@ class ListFragment : Fragment() {
             findNavController().navigate(R.id.action_listFragment_to_addFragment)
         }
 
-        val adapter = ListAdapter()
+        // Passing this view's nav controller to the list item, since it doesn't have one
+        val adapter = ListAdapter(onUserClick = { currentUser ->
+            binding.root.findNavController().navigate(
+                ListFragmentDirections.actionListFragmentToUpdateFragment(
+                    currentUser.id
+                )
+            )
+        })
+
         with(binding.rvUserList) {
             this.adapter = adapter
             layoutManager = LinearLayoutManager(requireContext())

@@ -7,7 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.roomxmlviewsexperiment.databinding.UserItemBinding
 import com.example.roomxmlviewsexperiment.model.user.User
 
-class ListAdapter : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
+class ListAdapter(private val onUserClick: (currentUser: User) -> Unit) :
+    RecyclerView.Adapter<ListAdapter.ViewHolder>() {
 
     private var userList = emptyList<User>()
 
@@ -41,6 +42,11 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = userList[position]
         holder.bind(currentItem)
+
+        holder.itemView.setOnClickListener {
+            onUserClick(currentItem)
+        }
+
     }
 
     @SuppressLint("NotifyDataSetChanged")
