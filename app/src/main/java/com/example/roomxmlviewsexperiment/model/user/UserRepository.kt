@@ -15,4 +15,8 @@ class UserRepository(private val userDao: UserDao) {
         return userDao.getUserById(userId) ?: throw NotFoundException("User not found.")
     }
 
+    suspend fun deleteUser(user: User) {
+        userDao.deleteUser(user)
+    }
+
 }

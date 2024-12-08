@@ -35,4 +35,11 @@ class UserViewModel(application: Application) :
             repository.getUserById(userId)
         }
     }
+
+    fun deleteUser(user: User) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteUser(user)
+        }
+    }
+
 }
