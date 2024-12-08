@@ -1,11 +1,8 @@
 package com.example.roomxmlviewsexperiment.model.user
 
-import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import kotlinx.parcelize.Parcelize
 
-@Parcelize
 @Entity
 data class User(
     @PrimaryKey(autoGenerate = true)
@@ -13,4 +10,4 @@ data class User(
     val firstName: String,
     val lastName: String,
     val age: Int,
-) : Parcelable
+)
