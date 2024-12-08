@@ -6,8 +6,8 @@ class UserRepository(private val userDao: UserDao) {
 
     val usersData: LiveData<List<User>> = userDao.getAllUsers()
 
-    suspend fun addUser(user: User) {
-        userDao.addUser(user)
+    suspend fun upsertUser(user: User) {
+        userDao.upsertUser(user)
     }
 
 }

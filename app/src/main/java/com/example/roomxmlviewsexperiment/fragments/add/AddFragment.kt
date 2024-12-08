@@ -37,7 +37,7 @@ class AddFragment : Fragment() {
         val age = binding.etAge.text.toString()
 
         if (firstName.isNotEmpty() && lastName.isNotEmpty() && age.isNotEmpty()) {
-            userViewModel.addUser(
+            userViewModel.upsertUser(
                 User(
                     0,
                     firstName,
@@ -51,7 +51,6 @@ class AddFragment : Fragment() {
             Toast.makeText(requireContext(), "Please fill out all fields.", Toast.LENGTH_LONG)
                 .show()
         }
-
 
     }
 
