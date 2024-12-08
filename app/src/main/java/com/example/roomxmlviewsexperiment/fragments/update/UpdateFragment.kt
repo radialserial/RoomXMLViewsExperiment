@@ -87,7 +87,6 @@ class UpdateFragment : Fragment(), MenuProvider {
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
         if (menuItem.itemId == R.id.menu_delete) {
             showDeleteUserDialog()
-            findNavController().navigate(R.id.action_updateFragment_to_listFragment)
             return true
         }
         return false
@@ -97,6 +96,7 @@ class UpdateFragment : Fragment(), MenuProvider {
         AlertDialog.Builder(requireContext())
             .setPositiveButton("Yes") { _, _ ->
                 deleteUser()
+                findNavController().navigate(R.id.action_updateFragment_to_listFragment)
             }
             .setNegativeButton("No") { _, _ -> }
             .setTitle("Deleting ${currentUser.firstName}")
