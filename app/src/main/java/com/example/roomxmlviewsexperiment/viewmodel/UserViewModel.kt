@@ -7,7 +7,9 @@ import androidx.lifecycle.viewModelScope
 import com.example.roomxmlviewsexperiment.model.AppDatabase
 import com.example.roomxmlviewsexperiment.model.user.User
 import com.example.roomxmlviewsexperiment.model.user.UserRepository
+import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 class UserViewModel(application: Application) :
@@ -22,9 +24,15 @@ class UserViewModel(application: Application) :
         usersData = repository.usersData
     }
 
-    fun addUser(user: User) {
+    fun upsertUser(user: User) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.addUser(user)
+            repository.upsertUser(user)
+        }
+    }
+
+    fun getUserById(userId: Int): Deferred<User> {
+        return viewModelScope.async(Dispatchers.IO) {
+            repository.getUserById(userId)
         }
     }
 }
